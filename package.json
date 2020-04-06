@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "format": "npm run minify-json && npm run json-beautify && npm run js-beautify",
+        "minify-json": "minify-json ./",
+        "js-beautify": "js-beautify -js -q -r -f ./**/*.js",
+        "json-beautify": "js-beautify -js -r -f ./**/*.json"
+    }
+}
