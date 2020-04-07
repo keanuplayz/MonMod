@@ -1,5 +1,5 @@
 {
-	"name": "MonikaMod",
-	"main": "mod.js",
-	"version": "1.1.1"
+    "name": "MonikaMod",
+    "main": "mod.js",
+    "version": "1.1.1"
 }
