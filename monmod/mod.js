@@ -1,0 +1,1 @@
+console.log("MonikaMod has successfully loaded.")
