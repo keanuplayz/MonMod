@@ -86,8 +86,8 @@
         ],
         "icons": [{
             "icon": "area_up",
-            "x": 20,
-            "y": 20,
+            "x": 250,
+            "y": 250,
             "map": 0,
             "data": {
                 "area": "heat-village",
