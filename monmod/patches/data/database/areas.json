@@ -1,0 +1,33 @@
+{
+    "test": {
+        "name": {
+            "en_US": "Golden Everstream",
+            "ko_KR": "Golden Everstream",
+            "langUid": 4423
+        },
+        "description": {
+            "en_US": "An upcoming area in CrossWorlds for evotars!",
+            "ko_KR": "An upcoming area in CrossWorlds for evotars!"
+        },
+        "areaType": "TOWN",
+        "order": 1000,
+        "track": true,
+        "chests": 0,
+        "position": {
+            "x": 60,
+            "y": 60
+        },
+        "landmarks": {
+            "teleporter": {
+                "name": {
+                    "en_US": "Teleporter",
+                    "ko_KR": "텔레포터"
+                },
+                "description": {
+                    "en_US": "Entrance",
+                    "ko_KR": "입구."
+                }
+            }
+        }
+    }
+}
