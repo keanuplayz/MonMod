@@ -3,8 +3,8 @@
     "version": "0.0.1",
     "scripts": {
         "format": "npm run json-beautify && npm run js-beautify",
-        "js-beautify": "npm run beautify-cmd -q **/*.js",
-        "json-beautify": "npm run beautify-cmd **/*.json",
+        "js-beautify": "npm run beautify-cmd -q \"**/*.js\"",
+        "json-beautify": "npm run beautify-cmd \"**/*.json\"",
         "beautify-cmd": "js-beautify -js -r -f"
     },
     "dependencies": {
