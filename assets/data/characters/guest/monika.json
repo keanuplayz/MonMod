@@ -1,0 +1,181 @@
+{
+    "name": {
+        "en_US": "Monika",
+        "de_DE": "Monika",
+        "ko_KR": "모니카",
+        "langUid": 1
+    },
+    "animSheet": {
+        "namedSheets": {
+            "move": {
+                "src": "media/entity/npc/guest/monika.png",
+                "xCount": 1,
+                "offX": 0,
+                "offY": 0,
+                "width": 32,
+                "height": 40
+            }
+        },
+        "shapeType": "Y_FLAT",
+        "offset": {
+            "x": 0,
+            "y": -2,
+            "z": 0
+        },
+        "SUB": [{
+            "sheet": "move",
+            "dirs": "4",
+            "flipX": [0, 0, 0, 1],
+            "tileOffsets": [0, 1, 2, 1],
+            "SUB": [{
+                "name": "idle",
+                "time": 1,
+                "repeat": false,
+                "frames": [0]
+            }]
+        }],
+        "DOCTYPE": "MULTI_DIR_ANIMATION"
+    },
+    "walkAnimSet": {
+        "normal": {
+            "idle": "idle",
+            "move": "walk"
+        }
+    },
+    "walkAnims": "normal",
+    "configs": {
+        "normal": {
+            "relativeVel": 0.5
+        }
+    },
+    "face": {
+        "width": 105,
+        "height": 148,
+        "centerX": 38,
+        "centerY": 52,
+        "src": "guest/MonikaDefault.png",
+        "subImages": {
+            "tired": "guest/MonikaTired.png",
+            "awkward": "guest/MonikaAwkward.png",
+            "concern": "guest/MonikaConcern.png",
+            "surprised": "guest/MonikaSurprised.png",
+            "happy": "guest/MonikaHappy.png",
+            "distracted": "guest/MonikaDistracted.png"
+        },
+        "parts": [{
+            "normal": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0
+            },
+            "tired": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "tired"
+            },
+            "awkward": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "awkward"
+            },
+            "concern": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "concern"
+            },
+            "distracted": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "distracted"
+            },
+            "happy": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "happy"
+            },
+            "surprised": {
+                "srcX": 0,
+                "srcY": 0,
+                "width": 105,
+                "height": 148,
+                "destX": 0,
+                "destY": 0,
+                "subX": 0,
+                "subY": 0,
+                "img": "surprised"
+            }
+        }],
+        "expressions": {
+            "DEFAULT": {
+                "faces": [
+                    ["normal"]
+                ]
+            },
+            "TIRED": {
+                "faces": [
+                    ["tired"]
+                ]
+            },
+            "AWKWARD": {
+                "faces": [
+                    ["awkward"]
+                ]
+            },
+            "CONCERN": {
+                "faces": [
+                    ["concern"]
+                ]
+            },
+            "DISTRACTED": {
+                "faces": [
+                    ["distracted"]
+                ]
+            },
+            "HAPPY": {
+                "faces": [
+                    ["happy"]
+                ]
+            },
+            "SURPRISED": {
+                "faces": [
+                    ["surprised"]
+                ]
+            }
+        }
+    }
+}
