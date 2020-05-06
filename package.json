@@ -11,5 +11,6 @@
     "dependencies": {
         "js-beautify": "^1.10.3",
         "minify-json": "^1.0.0"
-    }
+    },
+    "ccmodDependencies": {}
 }
