@@ -138,5 +138,25 @@
             "pivotY": 32
         },
         "nudging": true
+    }, {
+        "name": "grass2",
+        "size": {
+            "x": 8,
+            "y": 8,
+            "z": 20
+        },
+        "collType": "IGNORE",
+        "fix": {
+            "gfx": "media/map/golden-everstream-props.png",
+            "x": 64,
+            "y": 409,
+            "w": 31,
+            "h": 22,
+            "flipX": false,
+            "shape": "Y_FLAT",
+            "pivotX": 8,
+            "pivotY": 16
+        },
+        "nudging": true
     }]
 }
