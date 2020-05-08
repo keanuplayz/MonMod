@@ -85,10 +85,14 @@
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ],
         "icons": [{
-            "icon": "arrow_up",
-            "x": 10,
-            "y": 10,
-            "map": 0
+            "icon": "area_up",
+            "x": 240,
+            "y": -5,
+            "map": 0,
+            "data": {
+                "area": "heat-village",
+                "map": "heat-village.baki-2"
+            }
         }],
         "maps": [{
             "path": "golden-everstream.path-1",
@@ -104,7 +108,13 @@
             "dungeon": ""
         }],
         "connections": [],
-        "landmarks": []
+        "landmarks": [{
+            "id": "teleporter",
+            "x": 230,
+            "y": 20,
+            "map": 0,
+            "option": "DEFAULT"
+        }]
     }],
     "chests": 1,
     "defaultFloor": 0
