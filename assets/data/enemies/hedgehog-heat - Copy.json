@@ -218,8 +218,8 @@
                 "repeat": false,
                 "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
             }
-		}
-	},
+        }
+    },
     "actions": {
         "Idle": [{
             "value": true,
@@ -228,45 +228,45 @@
             "minTime": 0.1,
             "maxTime": 0.3,
             "type": "WAIT_RANDOM"
-        }], 
+        }],
         "Burn": [{
-			"wait": false,
-			"viaWalkConfig": false,
-			"type": "SHOW_ANIMATION",
-			"anim": "roll"
-		}, {
+            "wait": false,
+            "viaWalkConfig": false,
+            "type": "SHOW_ANIMATION",
+            "anim": "roll"
+        }, {
             "time": 1.2,
             "type": "WAIT"
         }, {
-			"value": 80,
-			"type": "SET_SPEED"
-		}, {
+            "value": 80,
+            "type": "SET_SPEED"
+        }, {
             "time": 0.05,
             "stopBeforeEdge": false,
             "type": "MOVE_FORWARD"
         }, {
-			"align": "BOTTOM",
-			"centralAngle": 0.03,
-			"angleVary": 0,
-			"startDist": 24,
-			"startDistCollide": "CLOSER",
-			"random": true,
-			"count": 15,
-			"duration": 0.5,
-			"clockwise": false,
-			"flipLeftFace": 0,
-			"circularArea": false,
-			"uniformDir": 0,
-			"delay": 0,
-			"repeat": false,
-			"type": "SHOOT_PROXY_RANGE",
-			"proxy": "flame",
-			"offset": {
-				"x": 0,
-				"y": 0,
-				"z": 8
-			}
-		}, {
+            "align": "BOTTOM",
+            "centralAngle": 0.03,
+            "angleVary": 0,
+            "startDist": 24,
+            "startDistCollide": "CLOSER",
+            "random": true,
+            "count": 15,
+            "duration": 0.5,
+            "clockwise": false,
+            "flipLeftFace": 0,
+            "circularArea": false,
+            "uniformDir": 0,
+            "delay": 0,
+            "repeat": false,
+            "type": "SHOOT_PROXY_RANGE",
+            "proxy": "flame",
+            "offset": {
+                "x": 0,
+                "y": 0,
+                "z": 8
+            }
+        }, {
             "time": 0.5,
             "type": "WAIT"
         }],
