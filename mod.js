@@ -7,7 +7,7 @@ export default class MonMod {
         const defaultTracks = this.loadFile("patches/defaultTracks.json");
         ig.merge(ig.BGM_DEFAULT_TRACKS, defaultTracks);
         const destructible = this.loadFile("patches/itemDestructible.json");
-        ig.merge(ig.ITEM_DESTRUCT_TYPE, destructible);
+        ig.merge(sc.ITEM_DESTRUCT_TYPE, destructible);
 
         console.log("MonikaMod has successfully loaded.");
     }
