@@ -9,13 +9,13 @@
             "en_US": "An upcoming area in CrossWorlds for evotars!",
             "ko_KR": "An upcoming area in CrossWorlds for evotars!"
         },
-        "areaType": "TOWN",
+        "areaType": "PATH",
         "order": 1000,
         "track": true,
-        "chests": 0,
+        "chests": 2,
         "position": {
-            "x": 60,
-            "y": 60
+            "x": 120,
+            "y": 231
         },
         "landmarks": {
             "teleporter": {

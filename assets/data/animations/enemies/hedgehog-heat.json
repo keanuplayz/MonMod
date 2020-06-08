@@ -7,6 +7,13 @@
             "height": 32,
             "xCount": 10
         },
+        "spin": {
+            "src": "media\/entity\/enemy\/hedgehog-heat.png",
+            "width": 40,
+            "height": 32,
+            "xCount": 4,
+            "offY": 128
+        },
         "roll": {
             "src": "media\/entity\/enemy\/hedgehog-heat.png",
             "width": 40,
@@ -47,6 +54,17 @@
             "time": 0.05,
             "repeat": true,
             "frames": [0, 1]
+        }]
+    }, {
+        "sheet": "spin",
+        "dirs": 1,
+        "tileOffsets": [0, 0],
+        "flipX": [0, 0, 1, 0, 1, 1],
+        "SUB": [{
+            "name": "spin",
+            "time": 0.05,
+            "repeat": true,
+            "frames": [0, 1, 2, 3]
         }]
     }]
 }
