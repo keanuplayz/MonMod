@@ -1,5 +1,5 @@
 {
-    "StoneOfValor": {
+    "Golden-Fern-1": {
         "size": {
             "x": 16,
             "y": 16,
@@ -14,15 +14,15 @@
             "sheet": "puzzle.destructible",
             "name": "small"
         },
-        "debris": {
-            "sheet": "area.stones",
-            "name": "burstValor"
+        debris: {
+            sheet: "area.autumn",
+            name: "plantBurst"
         },
         "anims": {
             "shapeType": "Y_FLAT",
             "sheet": {
-                "src": "media/entity/objects/destructible-stones.png",
-                "width": 24,
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
                 "height": 32,
                 "offY": 0
             },
@@ -32,15 +32,15 @@
                 "frames": [0],
                 "repeat": false
             }, {
-                "name": "default",
-                "time": 1,
-                "frames": [1],
-                "repeat": false
+                name: "default",
+                time: 1,
+                frames: [1],
+                repeat: false
             }, {
-                "name": "dropped",
-                "time": 1,
-                "frames": [2],
-                "repeat": false
+                name: "dropped",
+                time: 1,
+                frames: [2],
+                repeat: false
             }]
         }
     }
