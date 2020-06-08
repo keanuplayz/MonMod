@@ -1,272 +1,272 @@
 {
-	"Golden-Fern-1": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 0
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	},
-	"Golden-Fern-2": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 32
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	},
-	"Golden-Fern-3": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 64
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	},
-	"Golden-Bramble-1": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 96
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	},
-	"Golden-Bramble-2": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 128
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	},
-	"Golden-Bramble-3": {
-		"size": {
-			"x": 16,
-			"y": 16,
-			"z": 22
-		},
-		"effectOffset": {
-			"x": 0,
-			"y": 0,
-			"z": 12
-		},
-		"boom": {
-			"sheet": "puzzle.destructible",
-			"name": "small"
-		},
-		"debris": {
-			"sheet": "area.autumn",
-			"name": "plantBurst"
-		},
-		"anims": {
-			"shapeType": "Y_FLAT",
-			"sheet": {
-				"src": "media/entity/objects/golden-everstream-destructibles.png",
-				"width": 23,
-				"height": 32,
-				"offY": 160
-			},
-			"SUB": [{
-				"name": "default",
-				"time": 1,
-				"frames": [0],
-				"repeat": false
-			}, {
-				"name": "default",
-				"time": 1,
-				"frames": [1],
-				"repeat": false
-			}, {
-				"name": "dropped",
-				"time": 1,
-				"frames": [2],
-				"repeat": false
-			}]
-		}
-	}
+    "Golden-Fern-1": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 0
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    },
+    "Golden-Fern-2": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 32
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    },
+    "Golden-Fern-3": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 64
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    },
+    "Golden-Bramble-1": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 96
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    },
+    "Golden-Bramble-2": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 128
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    },
+    "Golden-Bramble-3": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/golden-everstream-destructibles.png",
+                "width": 23,
+                "height": 32,
+                "offY": 160
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    }
 }
