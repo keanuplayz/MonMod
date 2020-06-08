@@ -1,0 +1,47 @@
+{
+    "StoneOfValor": {
+        "size": {
+            "x": 16,
+            "y": 16,
+            "z": 22
+        },
+        "effectOffset": {
+            "x": 0,
+            "y": 0,
+            "z": 12
+        },
+        "boom": {
+            "sheet": "puzzle.destructible",
+            "name": "small"
+        },
+        "debris": {
+            "sheet": "area.stones",
+            "name": "burstValor"
+        },
+        "anims": {
+            "shapeType": "Y_FLAT",
+            "sheet": {
+                "src": "media/entity/objects/destructible-stones.png",
+                "width": 24,
+                "height": 32,
+                "offY": 0
+            },
+            "SUB": [{
+                "name": "default",
+                "time": 1,
+                "frames": [0],
+                "repeat": false
+            }, {
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
+            }, {
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
+            }]
+        }
+    }
+}
