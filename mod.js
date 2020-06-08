@@ -1,4 +1,4 @@
-export default class MonMod {
+export default class MonMod extends Plugin {
     constructor(mod) {
         this.mod = mod;
     }
