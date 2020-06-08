@@ -1,5 +1,6 @@
 export default class MonMod extends Plugin {
     constructor(mod) {
+        super();
         this.mod = mod;
     }
 
