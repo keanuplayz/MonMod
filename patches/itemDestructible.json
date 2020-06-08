@@ -14,9 +14,9 @@
             "sheet": "puzzle.destructible",
             "name": "small"
         },
-        debris: {
-            sheet: "area.autumn",
-            name: "plantBurst"
+        "debris": {
+            "sheet": "area.autumn",
+            "name": "plantBurst"
         },
         "anims": {
             "shapeType": "Y_FLAT",
@@ -32,15 +32,15 @@
                 "frames": [0],
                 "repeat": false
             }, {
-                name: "default",
-                time: 1,
-                frames: [1],
-                repeat: false
+                "name": "default",
+                "time": 1,
+                "frames": [1],
+                "repeat": false
             }, {
-                name: "dropped",
-                time: 1,
-                frames: [2],
-                repeat: false
+                "name": "dropped",
+                "time": 1,
+                "frames": [2],
+                "repeat": false
             }]
         }
     }
