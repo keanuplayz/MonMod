@@ -246,7 +246,7 @@
             "type": "BALL",
             "effect": "ar",
             "maxBounds": 0,
-			"destroyProxy": "fireTrail",
+            "destroyProxy": "fireTrail",
             "attack": {
                 "type": "LIGHT",
                 "element": "HEAT",
