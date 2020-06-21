@@ -49,10 +49,10 @@
                 "repeat": true,
                 "frames": [0, 1, 2, 1]
             }]
-       }, {
-           "sheet": "float",
-           "dirs": 4,
-           "flipX": [0, 0, 0, 1],
+        }, {
+            "sheet": "float",
+            "dirs": 4,
+            "flipX": [0, 0, 0, 1],
             "tileOffsets": [0, 3, 6, 3],
             "SUB": [{
                 "name": "float",
@@ -65,10 +65,10 @@
                 "repeat": true,
                 "frames": [0, 1, 2, 1]
             }]
-       }, {
-           "sheet": "pose",
-           "dirs": 1,
-           "flipX": [0],
+        }, {
+            "sheet": "pose",
+            "dirs": 1,
+            "flipX": [0],
             "tileOffsets": [0],
             "SUB": [{
                 "name": "pose",
