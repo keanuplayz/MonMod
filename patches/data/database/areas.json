@@ -29,5 +29,24 @@
                 }
             }
         }
+    },
+    "fold": {
+        "name": {
+            "en_US": "Eightfold Path",
+            "ko_KR": "Eightfold Path",
+            "langUid": 4423
+        },
+        "description": {
+            "en_US": "A long trek, seeker.",
+            "ko_KR": "A long trek, seeker."
+        },
+        "areaType": "DUNGEON",
+        "order": 1000,
+        "track": false,
+        "chests": 0,
+        "position": {
+            "x": 60,
+            "y": 60
+        }
     }
 }

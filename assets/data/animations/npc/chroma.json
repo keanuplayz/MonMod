@@ -1,0 +1,81 @@
+{
+    "DOCTYPE": "MULTI_DIR_ANIMATION",
+    "namedSheets": {
+        "move": {
+            "src": "media/entity/npc/guest/chroma.png",
+            "xCount": 3,
+            "offX": 0,
+            "offY": 0,
+            "width": 32,
+            "height": 40
+        },
+        "float": {
+            "src": "media\/entity\/npc\/guest\/chroma.png",
+            "xCount": 3,
+            "offX": 0,
+            "offY": 120,
+            "width": 32,
+            "height": 40
+        },
+        "pose": {
+            "src": "media\/entity\/npc\/guest\/chroma.png",
+            "xCount": 3,
+            "offX": 0,
+            "offY": 200,
+            "width": 32,
+            "height": 40
+        }
+    },
+    "shapeType": "Y_FLAT",
+    "offset": {
+        "x": 0,
+        "y": -4,
+        "z": 0
+    },
+    "SUB": [{
+        "sheet": "move",
+        "dirs": 4,
+        "flipX": [0, 0, 0, 1],
+        "SUB": [{
+            "tileOffsets": [0, 3, 6, 3],
+            "SUB": [{
+                "name": "idle",
+                "time": 1,
+                "repeat": false,
+                "frames": [1]
+            }, {
+                "name": "walk",
+                "time": 0.133,
+                "repeat": true,
+                "frames": [0, 1, 2, 1]
+            }]
+       }, {
+           "sheet": "float",
+           "dirs": 4,
+           "flipX": [0, 0, 0, 1],
+            "tileOffsets": [0, 3, 6, 3],
+            "SUB": [{
+                "name": "float",
+                "time": 1,
+                "repeat": true,
+                "frames": [0, 1, 2, 1]
+            }, {
+                "name": "floatWalk",
+                "time": 0.133,
+                "repeat": true,
+                "frames": [0, 1, 2, 1]
+            }]
+       }, {
+           "sheet": "pose",
+           "dirs": 1,
+           "flipX": [0],
+            "tileOffsets": [0],
+            "SUB": [{
+                "name": "pose",
+                "time": 1,
+                "repeat": true,
+                "frames": [0, 1, 2, 1]
+            }]
+        }]
+    }]
+}
