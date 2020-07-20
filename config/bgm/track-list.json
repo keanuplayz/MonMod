@@ -3,5 +3,15 @@
         "path": "media/bgm/muSanctuary.ogg",
         "loopEnd": 323,
         "volume": 1
+    },
+    "heaven": {
+        "path": "media/bgm/muHeaven.ogg",
+        "loopEnd": 315,
+        "volume": 1
+    },
+    "heavensdoor": {
+        "path": "media/bgm/muHeavensDoor.ogg",
+        "loopEnd": 424,
+        "volume": 1
     }
 }
