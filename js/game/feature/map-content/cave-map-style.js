@@ -11,6 +11,11 @@ ig.module("game.feature.map-content.cave-map-style").requires("game.feature.map-
                     x: 240,
                     y: 400
                 },
+				tesla: {
+                    sheet: "media/map/shockwave-dng.png",
+                    x: 240,
+                    y: 352
+                },
                 bouncer: {
                     sheet: "media/map/shockwave-dng-props.png",
                     x: 0,
@@ -33,9 +38,6 @@ ig.module("game.feature.map-content.cave-map-style").requires("game.feature.map-
                     sheet: "media/map/arid-interior.png",
                     x: 208,
                     y: 656
-                },
-                windBubblePanel: {
-                    sheet: "media/entity/style/wind-bubble-panel.png"
                 }
             }
         }

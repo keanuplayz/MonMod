@@ -47,7 +47,9 @@
     "targetDetect": {
         "detectDistance": 120,
         "loseDistance": 320,
-        "notifyNeighbourRadius": 100
+        "notifyNeighbourRadius": 100,
+        "onDistance": true,
+        "detectZDelta": 16
     },
     "hpBreaks": [],
     "size": {
