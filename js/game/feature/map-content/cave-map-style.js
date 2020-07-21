@@ -11,7 +11,7 @@ ig.module("game.feature.map-content.cave-map-style").requires("game.feature.map-
                     x: 240,
                     y: 400
                 },
-				tesla: {
+                tesla: {
                     sheet: "media/map/shockwave-dng.png",
                     x: 240,
                     y: 352
