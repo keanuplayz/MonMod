@@ -1,10 +1,14 @@
+import { Spirit } from "./spirit.js";
+
 export default class MonMod extends Plugin {
     constructor(mod) {
         super();
         this.mod = mod;
+        this.spirit = new Spirit();
     }
 
     async prestart() {
+        this.spirit.prestart();
         await this.loadPatches();
     }
 
