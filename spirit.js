@@ -119,19 +119,27 @@ export class Spirit {
             params: null,
             width: 0,
             height: 0,
+            timer: 0,
+            maxTime: 1,
             init: function(params, width, height) {
                 this.parent();
                 this.params = params;
                 this.width = width || 48;
                 this.height = height || 7;
             },
+            update: function() {
+                if (!ig.game.paused) {
+                    this.timer = (this.timer + ig.system.actualTick) % this.maxTime;
+                }
+            },
             updateDrawables: function(renderer) {
                 const barOffset = 16;
+                const colorOffset = this.timer.map(0, this.maxTime, this.width, 0).floor();
 
                 const currentSpirit = this.params.currentSpirit.limit(0, 1);
                 for (let i = 0; i < this.height; i++) {
                     if (currentSpirit > 0) {
-                        renderer.addGfx(this.gfx, this.height - i - 1, i, 0, barOffset, currentSpirit * this.width, 1);
+                        renderer.addGfx(this.gfx, this.height - i - 1, i, colorOffset, barOffset, currentSpirit * this.width, 1);
                     }
                 }
             },
