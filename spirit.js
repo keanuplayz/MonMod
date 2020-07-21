@@ -34,7 +34,8 @@ export class Spirit {
         });
 
         ig.ENTITY.Combatant.inject({
-            onTargetHit: function(target, attackInfo, damageResult) {
+            onTargetHit: function(target, attackInfo, damageResult, ...rest) {
+                this.parent(target, attackInfo, damageResult, ...rest);
                 if (attackInfo.spFactor) {
                     const baseFactor = damageResult.baseOffensiveFactor * attackInfo.spFactor;
                     const defFactor = baseFactor * ((1 + damageResult.defensiveFactor) / 2);
@@ -86,7 +87,7 @@ export class Spirit {
                 this.parent();
                 this.setSize(this.cardWidth + 24, 16);
                 this.setPivot(36, 16);
-                this.spiritBar = new sc.SpiritHudBarGui(sc.model.player.params, 48, 7, 8);
+                this.spiritBar = new sc.SpiritHudBarGui(sc.model.player.params, 48, 7);
                 this.spiritBar.setPos(10, 1);
                 this.addChildGui(this.spiritBar);
             },
