@@ -5,6 +5,7 @@ export class Spirit {
 
         sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED = 10283832;
 
+        this.spiritChangeHudGui();
         this.spiritHudBarGui();
         this.spiritHudGui();
 
@@ -16,6 +17,13 @@ export class Spirit {
                 this.addChildGui(spirit);
             }
         });
+
+        sc.CrossCode.inject({
+            init() {
+                this.parent();
+                ig.gui.addGuiElement(new sc.SpiritChangeHudGui);
+            }
+        })
 
         sc.CombatParams.inject({
             currentSpirit: 0,
@@ -143,6 +151,92 @@ export class Spirit {
                     }
                 }
             },
+        });
+    }
+
+    spiritChangeHudGui() {
+        const screenPos = Vec2.createC(0, 0);
+
+        sc.SpiritChangeHudGui = ig.GuiElementBase.extend({
+            transitions: {
+                DEFAULT: {
+                    state: {},
+                    time: 0.2,
+                    timeFunction: KEY_SPLINES.EASE_OUT
+                },
+                BIG: {
+                    state: {
+                        scaleY: 2,
+                        scaleX: 2
+                    },
+                    time: 0.1,
+                    timeFunction: KEY_SPLINES.EASE_IN
+                },
+                HIDDEN: {
+                    state: {
+                        scaleY: 0,
+                        scaleX: 1.5
+                    },
+                    time: 0.1,
+                    timeFunction: KEY_SPLINES.EASE_IN
+                }
+            },
+            gfx: new ig.Image("media/gui/spirit.png"),
+            currentSpirit: 0,
+            timer: 0,
+            init: function() {
+                this.parent();
+                this.setSize(34, 7);
+                this.setPivot(17, 3.5);
+                this.zIndex = 10;
+                this.doStateTransition("HIDDEN", true);
+                sc.Model.addObserver(sc.model.player.params, this)
+            },
+            modelChanged: function(model, message, data) {
+                if (sc.model.isCutscene()) {
+                    this.hide();
+                } else if (!ig.vars.get("playerVar.statusHidden")) {
+                    if (message === sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED) {
+                        if (this.currentSpirit < 1 && model.currentSpirit === 1) {
+                            this.timer = 1;
+                            this.updatePos(true);
+                            this.doStateTransition("BIG", true);
+                            this.doStateTransition("DEFAULT")
+                        } else if (model.currentSpirit < 1) {
+                            this.timer = 0;
+                            this.hide();
+                        }
+
+                        this.currentSpirit = model.currentSpirit;
+                    }
+                }
+            },
+            hide: function() {
+                this.doStateTransition("HIDDEN");
+            },
+            update: function() {
+                if (this.timer > 0) {
+                    this.timer = this.timer - ig.system.actualTick;
+                    if (this.timer <= 0) {
+                        this.timer = 0;
+                        this.hide()
+                    }
+                }
+                this.updatePos(true)
+            },
+            updatePos: function() {
+                const player = ig.game.playerEntity;
+                if (player) {
+                    const hook = this.hook;
+                    const center = player.getCenter(screenPos);
+                    ig.system.getScreenFromMapPos(screenPos, Math.round(center.x), Math.round(center.y - player.coll.pos.z + player.coll.size.y / 2));
+                    this.hook.pos.x = screenPos.x - hook.size.x / 2;
+                    this.hook.pos.y = screenPos.y - hook.size.y / 2
+                }
+            },
+            updateDrawables: function(renderer) {
+                renderer.addGfx(this.gfx, 0, 0, 38, 18, 34, 7);
+            }
         });
     }
 }
