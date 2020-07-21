@@ -1,4 +1,6 @@
-import { Spirit } from "./spirit.js";
+import {
+    Spirit
+} from "./spirit.js";
 
 export default class MonMod extends Plugin {
     constructor(mod) {

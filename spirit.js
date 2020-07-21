@@ -97,7 +97,7 @@ export class Spirit {
             },
             updateDrawables: function(renderer) {
                 renderer.addGfx(this.gfx, 0, 0, 0, 0, this.cardWidth, this.hook.size.y);
-                
+
                 if (sc.model.player.params.currentSpirit === 1) {
                     const spriteBase = 18;
                     const spriteWidth = 38;
@@ -118,7 +118,7 @@ export class Spirit {
             params: null,
             width: 0,
             height: 0,
-            init: function(params, width, height){
+            init: function(params, width, height) {
                 this.parent();
                 this.params = params;
                 this.width = width || 48;
@@ -126,10 +126,10 @@ export class Spirit {
             },
             updateDrawables: function(renderer) {
                 const barOffset = 16;
-        
-                const currentSpirit = this.params.currentSpirit.limit(0,1);
-                for(let i = 0; i < this.height; i++){
-                    if(currentSpirit > 0){
+
+                const currentSpirit = this.params.currentSpirit.limit(0, 1);
+                for (let i = 0; i < this.height; i++) {
+                    if (currentSpirit > 0) {
                         renderer.addGfx(this.gfx, this.height - i - 1, i, 0, barOffset, currentSpirit * this.width, 1);
                     }
                 }
