@@ -1,7 +1,7 @@
 export class Spirit {
     prestart() {
-        const spiritGainFactor = 0.1;
-        const spiritPenaltyFactor = 0.1;
+        const spiritGainFactor = 0.05;
+        const spiritPenaltyFactor = 0.05;
 
         sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED = 10283832;
 

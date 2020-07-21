@@ -87,8 +87,8 @@
         "maps": [{
             "path": "fold.heat-path-11",
             "name": {
-                "en_US": "Intrinsic Enterance",
-                "ko_KR": "Intrinsic Enterance",
+                "en_US": "The Beginning",
+                "ko_KR": "The Beginning",
                 "langUid": 2255
             },
             "offset": {
@@ -96,7 +96,7 @@
                 "y": 0
             },
             "dungeon": ""
-        }],
+        }]
     }],
     "chests": 0,
     "defaultFloor": 0
