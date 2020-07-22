@@ -1,0 +1,45 @@
+{
+    "numParticles": 1,
+    "duration": 0.2,
+    "centralAngle": 1,
+    "startDist": 16,
+    "random": true,
+    "moveDist": 10,
+    "moveVariance": 40,
+    "keySpline": "EASE_OUT",
+    "collision": false,
+    "align": "CENTER",
+    "moveWithTarget": true,
+    "pScale": {
+        "init": {
+            "x": 0.5,
+            "y": 0.5
+        },
+        "start": {
+            "value": {
+                "x": 1,
+                "y": 1
+            },
+            "time": 0.2,
+            "spline": ""
+        },
+        "end": {
+            "value": {
+                "x": 0,
+                "y": 0
+            },
+            "time": 0.2,
+            "spline": ""
+        }
+    },
+    "pRotate": {
+        "init": 0,
+        "start": {
+            "value": 0.5,
+            "spline": ""
+        }
+    },
+    "particleDuration": 0.7,
+    "anim": "SPIRIT_FILLED_PURPLE",
+    "type": "OFFSET_PARTICLE_CIRCLE"
+}

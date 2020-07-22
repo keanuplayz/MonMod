@@ -5,6 +5,7 @@ export class Spirit {
 
         sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED = 10283832;
 
+        this.screenTarget();
         this.spiritChangeHudGui();
         this.spiritHudBarGui();
         this.spiritHudGui();
@@ -87,6 +88,7 @@ export class Spirit {
             },
             gfx: new ig.Image("media/gui/spirit.png"),
             spiritBar: null,
+            lastSpirit: 0,
             timer: 0,
             maxTime: 0.5,
             cardWidth: 68,
@@ -98,6 +100,7 @@ export class Spirit {
                 this.spiritBar = new sc.SpiritHudBarGui(sc.model.player.params, 48, 7);
                 this.spiritBar.setPos(10, 1);
                 this.addChildGui(this.spiritBar);
+                sc.Model.addObserver(sc.model.player.params, this)
             },
             update: function() {
                 if (!ig.game.paused && sc.model.player.params.currentSpirit === 1) {
@@ -117,6 +120,27 @@ export class Spirit {
 
                     renderer.addGfx(this.gfx, this.cardWidth - spriteHeight, 0, 0, spriteOffset, spriteWidth, spriteHeight)
                 }
+            },
+            modelChanged: function(model, message, data) {
+                if (!sc.model.isCutscene() && message === sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED) {
+                    if (this.lastSpirit < 1 && model.currentSpirit === 1) {
+                        const screenPos = this.getPos();
+                        screenPos.x += this.hook.size.x / 2;
+                        screenPos.y += this.hook.size.y / 2;
+
+                        const effect = sc.combat.effects.combat.spawnOnTarget("spiritCharged", new ig.ScreenTarget(screenPos));
+                        effect.setIgnoreSlowdown();
+                    }
+
+                    this.lastSpirit = model.currentSpirit;
+                }
+            },
+            getPos: function() {
+                const result = Vec2.create(this.hook.pos);
+                for (let node = this.hook.parentHook; node && node !== ig.gui; node = node.parentHook) {
+                    Vec2.add(result, node.pos);
+                }
+                return result;
             }
         });
     }
@@ -238,5 +262,34 @@ export class Spirit {
                 renderer.addGfx(this.gfx, 0, 0, 38, 18, 34, 7);
             }
         });
+    }
+
+    screenTarget() {
+        ig.ScreenTarget = ig.Class.extend({
+            offset: {
+                x: 0,
+                y: 0
+            },
+            coll: {
+                pos: {
+                    x: 0,
+                    y: 0,
+                    z: 0
+                }
+            },
+            init(offset) {
+                if (offset) {
+                    this.offset = Vec2.create(offset);
+                }
+            },
+            addEntityAttached() {},
+            removeEntityAttached() {},
+            getAlignedPos() {
+                return ig.system.getMapFromScreenPos(this.coll.pos, this.offset.x, this.offset.y);
+            },
+            getCenter() {
+                return this.getAlignedPos();
+            }
+        })
     }
 }
