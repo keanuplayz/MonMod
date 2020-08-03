@@ -27,7 +27,7 @@ export class Spirit {
         sc.CrossCode.inject({
             init() {
                 this.parent();
-                
+
                 sc.gui.spiritChargeMenu = new sc.SpiritChargeMenu();
 
                 ig.gui.addGuiElement(new sc.SpiritChangeHudGui());
@@ -307,33 +307,33 @@ export class Spirit {
             getMaxChargeLevel(type) {
                 const result = this.parent(type);
                 const prefix = type.actionKey;
-                if (result === 3
-                    && this.model.getAction(sc.PLAYER_ACTION[prefix + "4"])) {
-                        return 4;
-                    }
+                if (result === 3 &&
+                    this.model.getAction(sc.PLAYER_ACTION[prefix + "4"])) {
+                    return 4;
+                }
 
                 return result;
             },
             startCharge(type) {
                 const result = this.parent(type);
-                if (result
-                    && this.charging.maxLevel === 3
-                    && this.getMaxChargeLevel(type) === 4
-                    && this.model.params.getSp() > sc.PLAYER_SP_COST[3]) {
-                        this.charging.maxLevel = 4;
-                        this.charging.cancelTime = 1 - tier4ChargeTime; //1s after tier 4 charged
-                    }
+                if (result &&
+                    this.charging.maxLevel === 3 &&
+                    this.getMaxChargeLevel(type) === 4 &&
+                    this.model.params.getSp() > sc.PLAYER_SP_COST[3]) {
+                    this.charging.maxLevel = 4;
+                    this.charging.cancelTime = 1 - tier4ChargeTime; //1s after tier 4 charged
+                }
                 return result;
             },
             handleCharge(flags, input) {
                 const maxLevel = this.charging.maxLevel;
                 const time = this.charging.time + ig.system.actualTick;
                 this.parent(flags, input);
-                if (maxLevel === 4
-                    && flags.applyCharge === 3
-                    && time > tier4ChargeTime) {
-                        flags.applyCharge = 4;
-                    }
+                if (maxLevel === 4 &&
+                    flags.applyCharge === 3 &&
+                    time > tier4ChargeTime) {
+                    flags.applyCharge = 4;
+                }
             },
             clearCharge(force) {
                 const maxLevel = this.charging.maxLevel;
@@ -515,7 +515,7 @@ export class Spirit {
                     arrow.reset();
                 }
                 this.arrows[startElement - 1].extend();
-                
+
                 this.selectedB = this.oppositeElement(startElement);
                 this.arrows[this.selectedB - 1].extend();
 
