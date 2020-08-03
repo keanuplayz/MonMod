@@ -1,11 +1,16 @@
+const tier4ChargeTime = 2;
+const spiritGainFactor = 0.015;
+const spiritPenaltyFactor = 0.05;
+
 export class Spirit {
     prestart() {
-        const spiritGainFactor = 0.015;
-        const spiritPenaltyFactor = 0.05;
 
         sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED = 10283832;
+        sc.PLAYER_SP_COST[3] = 12;
 
         this.screenTarget();
+        this.charge4();
+        this.spiritChargeMenu();
         this.spiritChangeHudGui();
         this.spiritHudBarGui();
         this.spiritHudGui();
@@ -22,7 +27,11 @@ export class Spirit {
         sc.CrossCode.inject({
             init() {
                 this.parent();
-                ig.gui.addGuiElement(new sc.SpiritChangeHudGui);
+                
+                sc.gui.spiritChargeMenu = new sc.SpiritChargeMenu();
+
+                ig.gui.addGuiElement(new sc.SpiritChangeHudGui());
+                ig.gui.addGuiElement(sc.gui.spiritChargeMenu);
             }
         })
 
@@ -291,5 +300,405 @@ export class Spirit {
                 return this.getAlignedPos();
             }
         })
+    }
+
+    charge4() {
+        ig.ENTITY.Player.inject({
+            getMaxChargeLevel(type) {
+                const result = this.parent(type);
+                const prefix = type.actionKey;
+                if (result === 3
+                    && this.model.getAction(sc.PLAYER_ACTION[prefix + "4"])) {
+                        return 4;
+                    }
+
+                return result;
+            },
+            startCharge(type) {
+                const result = this.parent(type);
+                if (result
+                    && this.charging.maxLevel === 3
+                    && this.getMaxChargeLevel(type) === 4
+                    && this.model.params.getSp() > sc.PLAYER_SP_COST[3]) {
+                        this.charging.maxLevel = 4;
+                        this.charging.cancelTime = 1 - tier4ChargeTime; //1s after tier 4 charged
+                    }
+                return result;
+            },
+            handleCharge(flags, input) {
+                const maxLevel = this.charging.maxLevel;
+                const time = this.charging.time + ig.system.actualTick;
+                this.parent(flags, input);
+                if (maxLevel === 4
+                    && flags.applyCharge === 3
+                    && time > tier4ChargeTime) {
+                        flags.applyCharge = 4;
+                    }
+            },
+            clearCharge(force) {
+                const maxLevel = this.charging.maxLevel;
+                const time = this.charging.time;
+                if (!force && maxLevel === 4 && time > tier4ChargeTime) {
+                    return;
+                }
+                return this.parent();
+            }
+        });
+    }
+
+    spiritChargeMenu() {
+        sc.SpiritChargeMenu = ig.GuiElementBase.extend({
+            background: null,
+            init() {
+                this.parent();
+
+                this.hook.zIndex = 10000;
+                this.hook.pauseGui = true;
+
+                this.setSize(ig.system.width, ig.system.height);
+                this.setPivot(ig.system.width / 2, ig.system.height / 2);
+
+                this.background = new sc.SpiritBgGui();
+                this.addChildGui(this.background);
+            },
+            show() {
+                this.background.show(ig.game.playerEntity.model.currentElementMode);
+            }
+        });
+
+        const cold_heat = {
+            pos: {
+                x: 0,
+                y: 65,
+            },
+            size: {
+                x: 31,
+                y: 28,
+            },
+            offset: {
+                x: 15,
+                y: 8,
+            }
+        }
+        const cold_shock = {
+            pos: {
+                x: 35,
+                y: 67,
+            },
+            size: {
+                x: 17,
+                y: 25,
+            },
+            offset: {
+                x: 8,
+                y: 10,
+            }
+        }
+        const shock_wave = {
+            pos: {
+                x: 5,
+                y: 95,
+            },
+            size: {
+                x: 22,
+                y: 22,
+            },
+            offset: {
+                x: 11,
+                y: 11,
+            }
+        }
+        const shock_heat = {
+            pos: {
+                x: 32,
+                y: 94,
+            },
+            size: {
+                x: 22,
+                y: 24,
+            },
+            offset: {
+                x: 11,
+                y: 12,
+            }
+        }
+        const wave_heat = {
+            pos: {
+                x: 2,
+                y: 119,
+            },
+            size: {
+                x: 28,
+                y: 37,
+            },
+            offset: {
+                x: 13,
+                y: 23,
+            }
+        }
+        const wave_cold = {
+            pos: {
+                x: 34,
+                y: 124,
+            },
+            size: {
+                x: 20,
+                y: 26,
+            },
+            offset: {
+                x: 10,
+                y: 13,
+            }
+        }
+
+        sc.SPIRIT_ICON = {
+            [sc.ELEMENT.HEAT]: {
+                [sc.ELEMENT.COLD]: cold_heat,
+                [sc.ELEMENT.SHOCK]: shock_heat,
+                [sc.ELEMENT.WAVE]: wave_heat,
+            },
+            [sc.ELEMENT.COLD]: {
+                [sc.ELEMENT.HEAT]: cold_heat,
+                [sc.ELEMENT.SHOCK]: cold_shock,
+                [sc.ELEMENT.WAVE]: wave_cold,
+            },
+            [sc.ELEMENT.SHOCK]: {
+                [sc.ELEMENT.HEAT]: shock_heat,
+                [sc.ELEMENT.COLD]: cold_shock,
+                [sc.ELEMENT.WAVE]: shock_wave,
+            },
+            [sc.ELEMENT.WAVE]: {
+                [sc.ELEMENT.HEAT]: wave_heat,
+                [sc.ELEMENT.COLD]: wave_cold,
+                [sc.ELEMENT.SHOCK]: shock_wave,
+            }
+        }
+
+        const position = Vec2.createC(0, 0);
+        sc.SpiritBgGui = ig.GuiElementBase.extend({
+            gfx: new ig.Image("media/gui/selector.png"),
+            transitions: {
+                DEFAULT: {
+                    state: {},
+                    time: 0.1,
+                    timeFunction: KEY_SPLINES.EASE_IN_OUT
+                },
+                HIDDEN: {
+                    state: {
+                        alpha: 0,
+                        scaleX: 0,
+                        scaleY: 0,
+                    },
+                    time: 0.3,
+                    timeFunction: KEY_SPLINES.EASE_IN_OUT
+                },
+            },
+            arrows: [],
+            selectedA: sc.ELEMENT.COLD,
+            selectedB: sc.ELEMENT.HEAT,
+            init() {
+                this.parent();
+                this.setSize(63, 63);
+                this.setPivot(63 / 2, 63 / 2);
+
+                for (let i = 1; i < 5; i++) {
+                    const arrow = new sc.SpiritElementArrowGui(sc.SPIRIT_ARROW[i]);
+                    this.arrows.push(arrow);
+                    this.addChildGui(arrow);
+                }
+
+                this.doStateTransition("HIDDEN", true);
+            },
+            show(startElement) {
+                this.selectedA = startElement;
+                for (const arrow of this.arrows) {
+                    arrow.reset();
+                }
+                this.arrows[startElement - 1].extend();
+                
+                this.selectedB = this.oppositeElement(startElement);
+                this.arrows[this.selectedB - 1].extend();
+
+
+                this.updatePos();
+                this.doStateTransition("DEFAULT");
+            },
+            hide() {
+                this.doStateTransition("HIDDEN");
+            },
+            select(selectElement) {
+                if (selectElement === 0 || selectElement === this.selectedB) {
+                    return;
+                }
+
+                this.arrows[this.selectedB - 1].retract();
+                this.selectedB = selectElement;
+                this.arrows[this.selectedB - 1].extend();
+            },
+            updateDrawables(renderer) {
+                renderer.addGfx(this.gfx, 3, 3, 0, 0, 57, 57);
+
+                this.drawIcon(renderer)
+            },
+            updatePos() {
+                const player = ig.game.playerEntity;
+                const hook = this.hook;
+                if (player) {
+                    const coll = player.coll;
+                    ig.system.getScreenFromMapPos(position, Math.round(coll.pos.x + coll.size.x / 2), Math.round(coll.pos.y - coll.pos.z - coll.size.z / 2 + coll.size.y / 2));
+                    hook.pos.x = position.x - hook.size.x / 2;
+                    hook.pos.y = position.y - hook.size.y / 2;
+                    hook.pos.x = Math.max(0, Math.min(ig.system.width - hook.size.x, hook.pos.x));
+                    hook.pos.y = Math.max(0, Math.min(ig.system.height - hook.size.y, hook.pos.y));
+                }
+            },
+            oppositeElement(element) {
+                return element % 2 == 0 ? element - 1 : element + 1;
+            },
+            drawIcon(renderer, a, b) {
+                const icon = sc.SPIRIT_ICON[this.selectedA][this.selectedB];
+                if (!icon) {
+                    return;
+                }
+
+                const pos = {
+                    x: 31 - icon.offset.x,
+                    y: 31 - icon.offset.y,
+                }
+
+                renderer.addGfx(this.gfx, pos.x, pos.y, icon.pos.x, icon.pos.y, icon.size.x, icon.size.y);
+            }
+        });
+
+        sc.SPIRIT_ARROW = {
+            [sc.ELEMENT.COLD]: {
+                direction: {
+                    x: 0,
+                    y: -1,
+                },
+                pos: {
+                    x: 57,
+                    y: 31,
+                },
+                size: {
+                    x: 31,
+                    y: 17,
+                },
+                offset: {
+                    x: 16,
+                    y: 0,
+                }
+            },
+            [sc.ELEMENT.HEAT]: {
+                direction: {
+                    x: 0,
+                    y: 1,
+                },
+                pos: {
+                    x: 57,
+                    y: 48,
+                },
+                size: {
+                    x: 31,
+                    y: 17,
+                },
+                offset: {
+                    x: 16,
+                    y: 46,
+                }
+            },
+            [sc.ELEMENT.WAVE]: {
+                direction: {
+                    x: -1,
+                    y: 0,
+                },
+                pos: {
+                    x: 74,
+                    y: 0,
+                },
+                size: {
+                    x: 17,
+                    y: 31,
+                },
+                offset: {
+                    x: 0,
+                    y: 16,
+                }
+            },
+            [sc.ELEMENT.SHOCK]: {
+                direction: {
+                    x: 1,
+                    y: 0,
+                },
+                pos: {
+                    x: 57,
+                    y: 0,
+                },
+                size: {
+                    x: 17,
+                    y: 31,
+                },
+                offset: {
+                    x: 46,
+                    y: 16,
+                }
+            },
+        }
+
+        sc.SpiritElementArrowGui = ig.GuiElementBase.extend({
+            gfx: new ig.Image("media/gui/selector.png"),
+            transitions: {
+                DEFAULT: {
+                    state: {},
+                    time: 0.3,
+                    timeFunction: KEY_SPLINES.EASE_IN_OUT
+                },
+                EXTENDED: {
+                    state: {
+                        offsetX: 0,
+                        offsetY: 0,
+                    },
+                    time: 0.1,
+                    timeFunction: KEY_SPLINES.EASE_IN_OUT
+                },
+            },
+            element: {},
+            init(element) {
+                this.parent();
+                this.setSize(63, 63);
+                this.setPivot(63 / 2, 63 / 2);
+
+                this.element = element;
+                const off = Vec2.mulF(element.direction, 3, Vec2.create());
+                this.transitions.EXTENDED.state.offsetX = off.x;
+                this.transitions.EXTENDED.state.offsetY = off.y;
+            },
+            updateDrawables(renderer) {
+                renderer.addGfx(this.gfx, this.element.offset.x, this.element.offset.y, this.element.pos.x, this.element.pos.y, this.element.size.x, this.element.size.y);
+            },
+            extend() {
+                this.doStateTransition("EXTENDED");
+            },
+            retract() {
+                this.doStateTransition("DEFAULT");
+            },
+            reset() {
+                this.doStateTransition("DEFAULT", true);
+            }
+        });
+
+        ig.ENTITY.Player.inject({
+            doCombatAction(action) {
+                if (action.endsWith("SPECIAL4")) {
+                    this.coll.time.animStatic = false
+                    ig.slowMotion.add(0, 0, 'spiritSelect');
+                    sc.gui.spiritChargeMenu.show();
+                } else {
+                    return this.parent(action);
+                }
+            }
+        })
+
+        //sc.gui.spiritChargeMenu
     }
 }
