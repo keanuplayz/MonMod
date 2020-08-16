@@ -6,6 +6,11 @@ export class Spirit {
     prestart() {
 
         sc.COMBAT_PARAM_MSG.SPIRIT_CHANGED = 10283832;
+        sc.PLAYER_ACTION.THROW_SPECIAL4 = 10283831;
+        sc.PLAYER_ACTION.THROW_SPECIAL4_1 = 10283833;
+        sc.PLAYER_ACTION.THROW_SPECIAL4_2 = 10283834;
+        sc.PLAYER_ACTION.THROW_SPECIAL4_3 = 10283835;
+        sc.PLAYER_ACTION.THROW_SPECIAL4_4 = 10283836;
         sc.PLAYER_SP_COST[3] = 12;
 
         this.screenTarget();
@@ -33,7 +38,22 @@ export class Spirit {
                 ig.gui.addGuiElement(new sc.SpiritChangeHudGui());
                 ig.gui.addGuiElement(sc.gui.spiritChargeMenu);
             }
-        })
+        });
+
+        window.initPlayer = () => {
+            const heatConfig = sc.model.player.elementConfigs[sc.ELEMENT.HEAT];
+            heatConfig.actions["THROW_SPECIAL3_A"] = heatConfig.actions["ATTACK_SPECIAL1_A"]
+            heatConfig.actions["THROW_SPECIAL4"] = heatConfig.actions["ATTACK_SPECIAL2_A"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL1] = heatConfig.actions["THROW_SPECIAL1_A"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL2] = heatConfig.actions["THROW_SPECIAL2_A"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL3] = heatConfig.actions["THROW_SPECIAL3_A"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL4] = heatConfig.actions["THROW_SPECIAL4"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL4_1] = heatConfig.actions["THROW_SPECIAL4"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL4_2] = heatConfig.actions["THROW_SPECIAL4"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL4_3] = heatConfig.actions["THROW_SPECIAL4"]
+            heatConfig.activeActions[sc.PLAYER_ACTION.THROW_SPECIAL4_4] = heatConfig.actions["THROW_SPECIAL4"]
+            sc.model.player.params.setMaxSp(64)
+        }
 
         sc.CombatParams.inject({
             currentSpirit: 0,
@@ -362,7 +382,7 @@ export class Spirit {
                 this.addChildGui(this.background);
             },
             show() {
-                this.background.show(ig.game.playerEntity.model.currentElementMode);
+                this.background.show(sc.model.player.currentElementMode);
             }
         });
 
@@ -531,6 +551,10 @@ export class Spirit {
                     return;
                 }
 
+                if (selectElement === this.selectedA) {
+                    selectElement = this.oppositeElement(selectElement)
+                }
+
                 this.arrows[this.selectedB - 1].retract();
                 this.selectedB = selectElement;
                 this.arrows[this.selectedB - 1].extend();
@@ -539,6 +563,34 @@ export class Spirit {
                 renderer.addGfx(this.gfx, 3, 3, 0, 0, 57, 57);
 
                 this.drawIcon(renderer)
+            },
+            update() {
+                if (this.hook.currentStateName === 'DEFAULT') {
+                    this.select(this.getMouseDir());
+
+                    if (!sc.control.charge()) {
+                        console.log('Selected element: ' + this.selectedB);
+                        this.hide();
+                        ig.game.playerEntity.clearCharge(true);
+                        ig.game.playerEntity.doCombatAction(ig.game.playerEntity.charging.type.actionKey + "4_" + this.selectedB);
+                        ig.slowMotion.clearNamed("spiritSelect");
+                    }
+                }
+            },
+            getMouseDir() {
+                const coll = ig.game.playerEntity.coll;
+                ig.system.getScreenFromMapPos(position, Math.round(coll.pos.x + coll.size.x / 2), Math.round(coll.pos.y - coll.pos.z - coll.size.z / 2 + coll.size.y / 2));
+                Vec2.sub(position, ig.input.mouse);
+
+                if (position.y > 0 && Math.abs(position.x) < position.y) {
+                    return sc.ELEMENT.COLD; //up
+                } else if (position.y < 0 && Math.abs(position.x) < -position.y) {
+                    return sc.ELEMENT.HEAT; //down
+                } else if (position.x > 0 && Math.abs(position.y) < position.x) {
+                    return sc.ELEMENT.WAVE; //left
+                } else {
+                    return sc.ELEMENT.SHOCK; //right
+                }
             },
             updatePos() {
                 const player = ig.game.playerEntity;
@@ -697,7 +749,7 @@ export class Spirit {
                     return this.parent(action);
                 }
             }
-        })
+        });
 
         //sc.gui.spiritChargeMenu
     }
